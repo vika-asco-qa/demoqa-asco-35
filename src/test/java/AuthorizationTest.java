@@ -18,8 +18,6 @@ public class AuthorizationTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // default 4000
     }
 
     @Test
@@ -28,7 +26,7 @@ public class AuthorizationTest {
         $("#firstName").setValue("Дейдюша");
         $("#lastName").setValue("Рогозин");
         $("#userEmail").setValue("rat@rat.ru");
-        $("#gender-radio-2").parent().click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("8005553535");
 
         $("#dateOfBirthInput").click();
@@ -37,14 +35,14 @@ public class AuthorizationTest {
         $$(".react-datepicker__day").findBy(text("30")).click();
 
         $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#hobbies-checkbox-2").parent().click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("photo.jpg");
         $("#currentAddress").setValue("Ratrat");
 
-        $("#state").click();
-        $(byText("NCR")).click();
+        $("#state").scrollTo().click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $(byText("Delhi")).click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
 
         $("#submit").click();
 
